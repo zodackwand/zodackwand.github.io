@@ -3,8 +3,6 @@ entries:
     entries:
       - title: "21 y.o."
       - title: "location: Vienna, Austria"
-        url: https://github.com/riggraz/no-style-please
-      - title: "used by <a href='https://riggraz.dev'>riggraz.dev</a> and <a href='https://github.com/riggraz/no-style-please/network/dependents'>many others</a>"
   - title: education
     entries:
       - title: "University of Warwick"
@@ -15,3 +13,19 @@ entries:
         entries:
           - title: "BEng Computer Science and Engineering"
           - title: "2022-2023"
+  - title: internships
+    entries:
+      - title: "ClearPicAI"
+        entries:
+          - title: "Intern - Software Development"
+          - title: "June 2024 - Present"
+      - title: "Hoteza Ltd."
+        entries:
+          - title: "Intern - Embedded Systems Development"
+          - title: "July 2024 - Present"
+  - title: projects
+    entries:
+      - title: "Soon to be added"
+  - title: publications
+    entries:
+      - title: "Soon to be added"
