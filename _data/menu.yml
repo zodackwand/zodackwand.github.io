@@ -1,12 +1,12 @@
 entries:
   - title: me
     entries:
-      - title: 21 y.o.
-      - title: location: vienna, austria
+      - title: "21 y.o."
+      - title: "location: Vienna, Austria"
         url: https://github.com/riggraz/no-style-please
       - title: "used by <a href='https://riggraz.dev'>riggraz.dev</a> and <a href='https://github.com/riggraz/no-style-please/network/dependents'>many others</a>"
   - title: education
     entries:
-      - title: University of Warwick
-      - title: BEng Computer Systems Engineering
-      - title: 2024-2027
+      - title: "University of Warwick"
+      - title: "BEng Computer Systems Engineering"
+      - title: "2024-2027"
