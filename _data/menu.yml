@@ -8,5 +8,10 @@ entries:
   - title: education
     entries:
       - title: "University of Warwick"
-      - title: "BEng Computer Systems Engineering"
-      - title: "2024-2027"
+      entries:
+        - title: "BEng Computer Systems Engineering"
+        - title: "2023-2027"
+      - title: "University of California, Irvine"
+      entries:
+        - title: "BEng Computer Science and Engineering"
+        - title: "2022-2023"
