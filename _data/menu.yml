@@ -1,7 +1,8 @@
 entries:
-  - title: info
+  - title: me
     entries:
-      - title: a (nearly) no-CSS, fast, minimalist Jekyll theme.
-      - title: github repo
-        url: https://github.com/riggraz/no-style-please
-      - title: "used by <a href='https://riggraz.dev'>riggraz.dev</a> and <a href='https://github.com/riggraz/no-style-please/network/dependents'>many others</a>"
+      - title: computer engineering and mathematics student
+      - title: currently in Vienna, Austria
+      - title: instagram: @ionicwae
+      - title: linkedin
+        url: https://www.linkedin.com/in/romanbikbulatov/
