@@ -5,23 +5,16 @@
 
     <div class="footer-col-wrapper">
       <div class="footer-col">
-        <p class="feed-subscribe">
-          <a href="{{ site.feed.path | default: 'feed.xml' | absolute_url }}">
-            <svg class="svg-icon orange">
-              <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
-            </svg><span>Subscribe</span>
-          </a>
-        </p>
-      {%- if site.author %}
+        {%- if site.author %}
         <ul class="contact-list">
-          {% if site.author.name -%}
+          {%- if site.author.name %}
             <li class="p-name">{{ site.author.name | escape }}</li>
-          {% endif -%}
-          {% if site.author.email -%}
+          {%- endif %}
+          {%- if site.author.email %}
             <li><a class="u-email" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
           {%- endif %}
         </ul>
-      {%- endif %}
+        {%- endif %}
       </div>
       <div class="footer-col">
         <p>{{ site.description | escape }}</p>
@@ -29,7 +22,22 @@
     </div>
 
     <div class="social-links">
-      {%- include social.html -%}
+      <!-- Добавь ссылки на социальные сети здесь -->
+      <ul class="contact-list">
+        <li><a href="https://twitter.com/yourprofile" target="_blank">
+          <svg class="svg-icon">
+            <use xlink:href="{{ 'assets/minima-social-icons.svg#twitter' | relative_url }}"></use>
+          </svg>Twitter</a></li>
+        <li><a href="https://github.com/yourprofile" target="_blank">
+          <svg class="svg-icon">
+            <use xlink:href="{{ 'assets/minima-social-icons.svg#github' | relative_url }}"></use>
+          </svg>GitHub</a></li>
+        <li><a href="https://linkedin.com/in/yourprofile" target="_blank">
+          <svg class="svg-icon">
+            <use xlink:href="{{ 'assets/minima-social-icons.svg#linkedin' | relative_url }}"></use>
+          </svg>LinkedIn</a></li>
+        <!-- Добавь другие социальные сети по мере необходимости -->
+      </ul>
     </div>
 
   </div>
