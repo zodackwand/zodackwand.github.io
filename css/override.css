@@ -29,6 +29,15 @@ hr {
   width: 1.35em;
 }
 
+.footer-contact-links {
+  margin-bottom: 0;
+}
+
+.footer-contact-links li {
+  display: inline-block;
+  margin-right: 16px;
+}
+
 /* Post navigation links */
 .post_navi {
   display: flex;

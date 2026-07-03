@@ -1,6 +1,5 @@
 ---
-layout: page
-title: Roman Bikbulatov
+layout: default
 ---
 
 I study Computer Engineering and Mathematics at the University of Warwick.
