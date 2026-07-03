@@ -29,13 +29,13 @@ hr {
   width: 1.35em;
 }
 
-.footer-contact-links {
-  margin-bottom: 0;
-}
-
-.footer-contact-links li {
-  display: inline-block;
-  margin-right: 16px;
+.home .post-header,
+.site-footer .footer-heading,
+.site-footer .footer-col-3,
+.site-footer .p-name,
+.site-footer .username,
+.site-nav .page-link[href="/"] {
+  display: none;
 }
 
 /* Post navigation links */
