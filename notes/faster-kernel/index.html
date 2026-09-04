@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two weeks on a kernel, beaten by a library</title>
+<meta name="description" content="I wrote a fused kernel. The vendor library was faster. Here is what the two weeks actually bought.">
+<link rel="stylesheet" href="/style.css">
+<link rel="alternate" type="application/rss+xml" title="Roman Bikbulatov" href="/rss.xml">
+</head>
+<body>
+
+<h1>Two weeks on a kernel, beaten by a library</h1>
+<div class="date">2 July 2026</div>
+
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/notes/">Notes</a>
+  <a href="/research/">Research</a>
+</div>
+
+<p>The profile said sixty-one per cent of the step was in one fused block. The
+arithmetic said that block was moving four times more memory than it needed to.
+Those two facts together are the most seductive sentence in systems work, and I
+spent two weeks following it.</p>
+
+<p>The napkin version, before any code:</p>
+
+<pre><code>tokens      = 8192
+hidden      = 4096
+bytes/elem  = 2            (bf16)
+round trips = 4            (what the naive version does)
+
+traffic = 8192 * 4096 * 2 * 4  =  268 MB
+at ~2.6 TB/s                   =  103 us
+
+measured                       =  390 us
+</code></pre>
+
+<p>A factor of about four. That is exactly the size of gap that makes you
+believe you are one clever rewrite away from it, and exactly the size of gap
+that is usually made of six unglamorous things rather than one clever one.</p>
+
+<h2>What actually happened</h2>
+
+<p>I got to 190&nbsp;&micro;s. Then I ran the vendor library, which I had not
+benchmarked because I had assumed it did not fuse this pattern. It does, as of
+some version I had not read the notes for. It runs in 171&nbsp;&micro;s.</p>
+
+<p>The honest summary is that two weeks of work produced a kernel that is ten
+per cent slower than one line of someone else's code.</p>
+
+<h2>What the two weeks bought</h2>
+
+<p>I do not think they were wasted, and I want to be careful about why, because
+"it was a learning experience" is the sort of thing people say to avoid saying
+"I was wrong".</p>
+
+<ul>
+  <li>I now know the shape of the roofline for this operator, so the next time
+      a profile points here I can decide in ten minutes rather than ten days.</li>
+  <li>Half of the speedup came from a layout change upstream of the kernel.
+      That change survived; it helps the library version too.</li>
+  <li>I found that our benchmark harness was measuring with the cache warm in a
+      way production never is. That was worth the fortnight on its own.</li>
+</ul>
+
+<p>The lesson I am actually taking is smaller and duller than the one I wanted:
+benchmark the boring option first. Not because it usually wins &mdash; it does
+not always &mdash; but because knowing where it lands is what tells you whether
+the interesting option is worth two weeks.</p>
+
+<p class="prevnext">
+  <a href="/notes/late-trains/">&larr; Previous</a>
+  <a href="/notes/index-that-forgot/">Next &rarr;</a>
+  <a href="/notes/">Archive</a>
+</p>
+
+<hr>
+<footer>
+  <div class="crumbs"><a href="/">Roman Bikbulatov</a>: <a href="/notes/">Notes</a>: Two weeks on a kernel, beaten by a library</div>
+</footer>
+
+</body>
+</html>

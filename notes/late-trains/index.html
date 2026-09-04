@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trains, and the arithmetic of being late</title>
+<meta name="description" content="Two railways, the same average delay, and completely different journeys.">
+<link rel="stylesheet" href="/style.css">
+<link rel="alternate" type="application/rss+xml" title="Roman Bikbulatov" href="/rss.xml">
+</head>
+<body>
+
+<h1>Trains, and the arithmetic of being late</h1>
+<div class="date">19 May 2026</div>
+
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/notes/">Notes</a>
+  <a href="/research/">Research</a>
+</div>
+
+<p>Two railways can advertise the same average delay and be completely
+different things to travel on. One is late by two minutes every day. The other
+is punctual for a month and then eats your evening. The mean is identical. The
+experience is not comparable.</p>
+
+<p>I spent an afternoon on a platform in the rain working out why the timetable
+felt like a lie, and the answer was that I was reading a mean where I should
+have been reading a tail. It is the same mistake I make at work about twice a
+year, and it is somehow easier to see when you are the one standing outside.</p>
+
+<h2>The connection is the whole thing</h2>
+
+<p>A single late train is an inconvenience. A late train with a nine-minute
+connection is a two-hour problem, because the delay does not add, it
+multiplies through whatever comes next. The system's behaviour is set by the
+smallest slack anywhere in the chain, not by the average slack.</p>
+
+<p>Which is why the useful question at the ticket desk is not "is this train
+usually on time", but "what happens if it is not". A journey with two long,
+forgiving changes beats a journey with one tight one, even when the tight one
+is forty minutes faster on paper. The forty minutes is the mean. The
+alternative is the tail.</p>
+
+<h2>The obvious analogy, stated once</h2>
+
+<p>Every request that fans out to eight services and waits for all of them is
+a nine-minute connection. You do not get the average of the eight. You get the
+worst of the eight, every single time, and then you get to explain to someone
+why the p99 does not look like the dashboard.</p>
+
+<p>I will not belabour it. But I did stop optimising a median that afternoon,
+and I got home two hours late, which felt like the universe making the point
+more firmly than necessary.</p>
+
+<p class="prevnext">
+  <a href="/notes/faster-kernel/">Next &rarr;</a>
+  <a href="/notes/">Archive</a>
+</p>
+
+<hr>
+<footer>
+  <div class="crumbs"><a href="/">Roman Bikbulatov</a>: <a href="/notes/">Notes</a>: Trains, and the arithmetic of being late</div>
+</footer>
+
+</body>
+</html>

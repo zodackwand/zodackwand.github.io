@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Roman Bikbulatov</title>
+  <link>https://zodackwand.github.io/</link>
+  <description>Notes on retrieval, inference, and things that are slower than they should be.</description>
+  <language>en</language>
+  <atom:link href="https://zodackwand.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+
+  <item>
+    <title>The index that forgot where the questions came from</title>
+    <link>https://zodackwand.github.io/notes/index-that-forgot/</link>
+    <guid>https://zodackwand.github.io/notes/index-that-forgot/</guid>
+    <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
+    <description>A graph index is built over the data you have, not the questions you will be asked.</description>
+  </item>
+
+  <item>
+    <title>Two weeks on a kernel, beaten by a library</title>
+    <link>https://zodackwand.github.io/notes/faster-kernel/</link>
+    <guid>https://zodackwand.github.io/notes/faster-kernel/</guid>
+    <pubDate>Thu, 02 Jul 2026 09:00:00 +0000</pubDate>
+    <description>I wrote a fused kernel. The vendor library was faster. Here is what the two weeks actually bought.</description>
+  </item>
+
+  <item>
+    <title>Trains, and the arithmetic of being late</title>
+    <link>https://zodackwand.github.io/notes/late-trains/</link>
+    <guid>https://zodackwand.github.io/notes/late-trains/</guid>
+    <pubDate>Tue, 19 May 2026 09:00:00 +0000</pubDate>
+    <description>Two railways, the same average delay, and completely different journeys.</description>
+  </item>
+
+</channel>
+</rss>
