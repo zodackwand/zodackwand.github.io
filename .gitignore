@@ -1,1 +1,5 @@
 .DS_Store
+
+# the original photo, kept out of the deploy
+*.HEIC
+*.heic
