@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research — Roman Bikbulatov</title>
-<meta name="description" content="Current projects and their state.">
+<meta name="description" content="Current projects.">
 <link rel="canonical" href="https://zodackwand.github.io/research/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Roman Bikbulatov">
 <meta property="og:title" content="Research — Roman Bikbulatov">
-<meta property="og:description" content="Current projects and their state.">
+<meta property="og:description" content="Current projects.">
 <meta property="og:url" content="https://zodackwand.github.io/research/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
@@ -36,34 +36,14 @@
 
 <h2 id="nearest-neighbour-search-under-distribution-shift">Nearest-neighbour search under distribution shift<a class="anchor" href="#nearest-neighbour-search-under-distribution-shift" aria-label="Link to this section">#</a></h2>
 
-<p>Supervised by Prof. Hakan Ferhatosmanoglu.</p>
+<p>With Prof. Hakan Ferhatosmanoglu. Graph indices such as HNSW are built over
+the base data, but the queries that arrive later need not come from the same
+distribution. I am measuring what that costs and what corrects it cheaply.</p>
 
-<p>Graph indices such as HNSW are constructed over the base data. Which
-neighbours a node keeps, and which long edges are worth their memory, are
-decided once, against whatever vectors are there at build time. Queries arrive
-later and need not resemble them. I am measuring what the mismatch costs,
-separating the part of the loss that belongs to the graph from the part that
-belongs to where the search begins, and looking for corrections cheap enough
-to apply online.</p>
+<h2 id="one-step-generative-models">One-step generative models<a class="anchor" href="#one-step-generative-models" aria-label="Link to this section">#</a></h2>
 
-<p>Experiments are running. There is no draft yet.</p>
-
-<h2 id="one-step-generative-models-for-translation-between-signals">One-step generative models for translation between signals<a class="anchor" href="#one-step-generative-models-for-translation-between-signals" aria-label="Link to this section">#</a></h2>
-
-<p>Supervised by Prof. Yu Guan.</p>
-
-<p>Flow matching methods that learn an average velocity field, as MeanFlow
-does, allow generation in one step instead of dozens. I am looking at what the
-averaging costs when the source and target domains differ in structure, and at
-where the one-step approximation stops holding.</p>
-
-<p>This is at an early stage.</p>
-
-<h2 id="interests">Interests<a class="anchor" href="#interests" aria-label="Link to this section">#</a></h2>
-
-<p>Efficient inference, hardware-aware algorithm design, and the theory of deep
-learning. In practice most of the work is measurement: deciding which number to
-trust, and which improvement is worth the week it would take.</p>
+<p>With Prof. Yu Guan. Flow matching on average velocity fields, after
+MeanFlow, so that generation takes one step rather than dozens.</p>
 </main>
 
 </div>

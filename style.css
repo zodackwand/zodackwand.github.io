@@ -49,6 +49,11 @@ main { flex: 1 1 auto; min-width: 0; max-width: 37em; }
 
 .side ul { list-style: none; margin: 0 0 1.6em 0; padding: 0; }
 .side li { margin-bottom: 0.35em; }
+
+/* The section links carry the navigation, so they are set at reading
+   size rather than at the smaller size of the column around them. */
+.side .sect { font-size: 15px; line-height: 1.5; }
+.side .sect li { margin-bottom: 0.5em; }
 .side .here > a { color: #141414; text-decoration: none; border-bottom: 1px solid #999; }
 
 /* --- text ----------------------------------------------------- */
@@ -177,7 +182,7 @@ footer .updated { font-variant-numeric: tabular-nums; }
   .page { display: block; }
   .side { position: static; margin-bottom: 2.5em; }
   .side ul { margin-bottom: 1em; }
-  .side .sect li { display: inline; margin-right: 1.1em; }
+  .side .sect li { display: inline; margin-right: 1.2em; }
   .side .me { font-size: 18px; margin-bottom: 0.9em; }
   main { max-width: none; }
   .portrait { width: 110px; margin-left: 1.2em; }
