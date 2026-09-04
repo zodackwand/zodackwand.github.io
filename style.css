@@ -1,0 +1,166 @@
+/* ---------------------------------------------------------------
+   Roman Bikbulatov — the entire design.
+   One file, no webfonts, no JavaScript. Keep it that way.
+   --------------------------------------------------------------- */
+
+html {
+  background: #fff;
+  color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* Generic sans-serif on purpose: the browser's own default face
+     (Helvetica on macOS, Arial on Windows). Naming a family here is
+     what softens it. */
+  font-family: sans-serif;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: #141414;
+  background: #fff;
+  max-width: 58em;
+  margin: 2.4em 0 3em 0;
+  padding: 0 2em;
+}
+
+/* --- two columns ---------------------------------------------- */
+
+.page { display: flex; align-items: flex-start; gap: 2.6em; }
+
+.side {
+  flex: 0 0 12.5em;
+  font-size: 0.86em;
+  line-height: 1.4;
+  position: sticky;
+  top: 2.2em;
+}
+
+main { flex: 1 1 auto; min-width: 0; max-width: 37em; }
+
+/* --- sidebar -------------------------------------------------- */
+
+.side .me {
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 1.5em;
+}
+.side .me a { color: #141414; text-decoration: none; }
+.side .me a:hover { color: #c02020; }
+
+.side ul { list-style: none; margin: 0 0 1.6em 0; padding: 0; }
+.side li { margin-bottom: 0.35em; }
+.side .here > a { color: #141414; text-decoration: none; border-bottom: 1px solid #999; }
+
+/* --- text ----------------------------------------------------- */
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 1.5em 0 0.4em 0;
+}
+h1 { font-size: 1.5em; margin-top: 0; }
+h2 { font-size: 1.13em; }
+h3 { font-size: 1em; }
+
+p, ul, ol, dl, blockquote, pre, table { margin: 0 0 0.8em 0; }
+main ul, main ol { padding-left: 1.3em; }
+li { margin-bottom: 0.2em; }
+
+a         { color: #1a3fb8; text-decoration: underline; }
+a:visited { color: #5b3a8e; }
+a:hover   { color: #c02020; }
+a img     { border: 0; }
+
+.date { font-size: 0.88em; color: #666; margin: -0.2em 0 1.4em 0; }
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid #ddd;
+  color: #444;
+}
+
+code, pre { font-family: Menlo, Consolas, monospace; font-size: 0.86em; }
+pre {
+  background: #f6f6f4;
+  border: 1px solid #e6e6e2;
+  padding: 0.8em 1em;
+  overflow-x: auto;
+}
+code { background: #f6f6f4; padding: 0 0.2em; }
+pre code { background: none; padding: 0; }
+
+table { border-collapse: collapse; }
+th, td { text-align: left; padding: 0.2em 1.6em 0.2em 0; vertical-align: top; }
+th { font-weight: normal; color: #666; border-bottom: 1px solid #ddd; }
+
+/* --- photo ---------------------------------------------------- */
+
+.portrait {
+  float: right;
+  width: 150px;
+  height: auto;
+  margin: 0.2em 0 0.8em 1.6em;
+  border: 1px solid #ddd;
+}
+
+/* --- dated lists ---------------------------------------------- */
+
+ul.entries { list-style: none; padding: 0; }
+ul.entries li { display: flex; gap: 1.1em; margin-bottom: 0.3em; }
+ul.entries .d {
+  flex: 0 0 auto;
+  width: 6.4em;              /* wide enough for "14 Aug 2026" */
+  white-space: nowrap;       /* never break a date across lines */
+  color: #666;
+  font-size: 0.92em;
+  padding-top: 0.08em;
+}
+
+.year { color: #666; font-size: 0.95em; margin: 1.5em 0 0.5em 0; }
+
+/* --- footer --------------------------------------------------- */
+
+hr { border: 0; border-top: 1px solid #ddd; margin: 3em 0 0.9em 0; clear: both; }
+
+footer { font-size: 0.86em; color: #666; font-style: italic; }
+footer a { color: #4a5fa8; }
+
+.prevnext { font-size: 0.9em; font-style: italic; margin-top: 2.5em; }
+.prevnext a { margin-right: 1.5em; }
+
+/* --- narrow screens ------------------------------------------- */
+
+@media (max-width: 46em) {
+  body { padding: 0 1.2em; margin-top: 1.5em; max-width: none; }
+  .page { display: block; }
+  .side { position: static; margin-bottom: 2.5em; }
+  .side ul { margin-bottom: 1em; }
+  .side .sect li { display: inline; margin-right: 1.1em; }
+  .side .me { font-size: 18px; margin-bottom: 0.9em; }
+  main { max-width: none; }
+  .portrait { width: 110px; margin-left: 1.2em; }
+}
+
+@media (max-width: 30em) {
+  ul.entries li { display: block; }
+  ul.entries .d { display: block; width: auto; }
+}
+
+/* --- dark ----------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  html, body { background: #131313; color: #ddd; }
+  a         { color: #85a9ff; }
+  a:visited { color: #b39ae0; }
+  a:hover   { color: #ff8a7a; }
+  .date, .year, footer, th, ul.entries .d { color: #8d8d8d; }
+  .side .me a, .side .here > a { color: #ddd; }
+  .side .here > a { border-bottom-color: #666; }
+  blockquote { border-left-color: #333; color: #aaa; }
+  pre, code { background: #1c1c1c; }
+  pre { border-color: #2b2b2b; }
+  hr, th { border-color: #303030; }
+  .portrait { border-color: #303030; }
+  footer a { color: #7f9ae0; }
+}
