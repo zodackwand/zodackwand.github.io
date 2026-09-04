@@ -46,7 +46,9 @@ you change either. Backdating a note means renaming it.
 ## Editing page text
 
 `_src/pages/*.html` have the same shape. `{{recent}}` anywhere in the front
-page body expands to the four most recent notes.
+page body expands to the four most recent notes, and anything wrapped in
+`{{#notes}}` ... `{{/notes}}` is dropped entirely while there are no notes, so
+the front page has no empty heading on it before the first one is written.
 
 ## Deploying
 

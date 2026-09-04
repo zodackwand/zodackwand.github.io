@@ -50,6 +50,8 @@ def load_notes():
     """Notes are _src/notes/YYYY-MM-DD-slug.html; date and slug come from
     the filename, so the front matter only needs a title."""
     notes = []
+    if not os.path.isdir(f"{SRC}/notes"):
+        return notes
     for name in sorted(os.listdir(f"{SRC}/notes")):
         if not name.endswith(".html"):
             continue
@@ -98,6 +100,13 @@ def entries(notes, show_year=True):
     return "\n".join(out)
 
 
+def section(body, name, keep):
+    """Drop a {{#name}}...{{/name}} block unless `keep`; keep just its
+    contents when we do."""
+    pat = re.compile(r"\{\{#%s\}\}(.*?)\{\{/%s\}\}" % (name, name), re.S)
+    return pat.sub((lambda m: m.group(1).strip()) if keep else "", body)
+
+
 def write(path, html):
     path = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
@@ -124,6 +133,7 @@ def build():
     for name, out in PAGES.items():
         meta, body = parse(f"{SRC}/pages/{name}.html")
         here = "/" if name == "index" else f"/{name}/"
+        body = section(body, "notes", bool(notes))
         body = body.replace("{{recent}}", entries(notes[:4]))
         crumbs = (f'<a href="/">{SITE}</a>: {meta["title"]}'
                   if name != "index" else SITE)
@@ -132,8 +142,9 @@ def build():
                           content=body, crumbs=crumbs))
 
     # Notes archive, grouped by year, newest first.
-    body = ["<h1>Notes</h1>",
-            "<p>Short pieces, written when something surprised me.</p>"]
+    body = ["<h1>Notes</h1>"]
+    if not notes:
+        body.append("<p>Nothing here yet.</p>")
     for year in sorted({n["date"].year for n in notes}, reverse=True):
         body.append(f'<h2 class="year">{year}</h2>')
         body.append(entries([n for n in notes if n["date"].year == year], False))
