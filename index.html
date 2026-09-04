@@ -4,67 +4,76 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roman Bikbulatov</title>
-<meta name="description" content="Roman Bikbulatov — notes on retrieval, inference, and things that are slower than they should be.">
+<meta name="description" content="Computer Engineering and Mathematics at the University of Warwick. Efficient inference, hardware-aware algorithm design, and the theory of deep learning.">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
-<link rel="alternate" type="application/rss+xml" title="Roman Bikbulatov" href="/rss.xml">
 </head>
 <body>
 
+<div class="page">
+
+<nav class="side">
+<div class="me"><a href="/">Roman Bikbulatov</a></div>
+<ul class="sect">
+<li class="here"><a href="/">Home</a></li>
+<li><a href="/notes/">Notes</a></li>
+<li><a href="/research/">Research</a></li>
+</ul>
+<ul class="sub">
+<li><a href="/notes/index-that-forgot/">The index that forgot where the questions came from</a></li>
+<li><a href="/notes/faster-kernel/">Two weeks on a kernel, beaten by a library</a></li>
+<li><a href="/notes/late-trains/">Trains, and the arithmetic of being late</a></li>
+</ul>
+</nav>
+
+<main>
 <h1>Roman Bikbulatov</h1>
 
-<div class="nav">
-  <span class="here">Home</span>
-  <a href="/notes/">Notes</a>
-  <a href="/research/">Research</a>
-  <a href="/rss.xml">RSS</a>
-</div>
+<img class="portrait" src="/assets/img/profile.svg" width="400" height="500" alt="Roman Bikbulatov">
 
-<p>I work on making retrieval and generation cheap enough to be boring. Mostly
-that means measuring things carefully, discovering the bottleneck is somewhere
-I did not expect, and then rewriting the part I was proudest of.</p>
+<p>I study Computer Engineering and Mathematics at the University of
+Warwick.</p>
 
-<p>This page is hand-written HTML and one stylesheet. It loads in under a
-kilobyte of CSS, has no tracker, no font to download, and no JavaScript. If it
-ever needs a build step, something has gone wrong.</p>
+<p>My research interests are efficient inference, hardware-aware algorithm
+design, and the theory of deep learning.</p>
 
-<h2>Currently</h2>
+<p>Previously I interned at startups, working on backend systems for
+LLM-based pipelines.</p>
 
-<p><b>Nearest-neighbour search when the queries move.</b> Graph indices are
-built over the data you have. The queries arrive later, from somewhere else,
-and nobody tells the index. I am trying to say precisely what that costs and
-what you can cheaply do about it.</p>
+<h2>Current work</h2>
 
-<p><b>Few-step generative models.</b> Learning average velocity fields rather
-than instantaneous ones, so that sampling is one or two forward passes instead
-of fifty. The interesting part is where the approximation breaks.</p>
+<p><b>ANN search under distribution shift.</b> With Prof. Hakan
+Ferhatosmanoglu. Graph indices such as HNSW are built over the base data, but
+queries need not come from the same distribution; I work on what that mismatch
+costs and how to handle it.</p>
 
-<p><b>Napkin math as a discipline.</b> A running collection of the arithmetic I
-wish someone had shown me before I started profiling: bytes moved, cache lines
-touched, the ratio between what the hardware could do and what we ask of it.</p>
+<p><b>One-step generative models for translation between signals.</b> With
+Prof. Yu Guan. The approach follows flow matching methods such as MeanFlow,
+which learn average velocity fields and so admit generation in a single
+step.</p>
 
 <h2>Recent notes</h2>
 
 <ul class="entries">
-  <li><span class="d">14 Aug 26</span><a href="/notes/index-that-forgot/">The index that forgot where the questions came from</a></li>
-  <li><span class="d">02 Jul 26</span><a href="/notes/faster-kernel/">Two weeks on a kernel, beaten by a library</a></li>
-  <li><span class="d">19 May 26</span><a href="/notes/late-trains/">Trains, and the arithmetic of being late</a></li>
+<li><span class="d">14 Aug 2026</span><a href="/notes/index-that-forgot/">The index that forgot where the questions came from</a></li>
+<li><span class="d">2 Jul 2026</span><a href="/notes/faster-kernel/">Two weeks on a kernel, beaten by a library</a></li>
+<li><span class="d">19 May 2026</span><a href="/notes/late-trains/">Trains, and the arithmetic of being late</a></li>
 </ul>
-
-<p><a href="/notes/">All notes &rarr;</a></p>
 
 <h2>Elsewhere</h2>
 
 <ul>
+  <li><a href="mailto:roman.bikbulatov@warwick.ac.uk">roman.bikbulatov@warwick.ac.uk</a></li>
   <li><a href="https://github.com/zodackwand">GitHub</a></li>
   <li><a href="https://www.linkedin.com/in/romanbikbulatov">LinkedIn</a></li>
-  <li>Email: roman [at] example.org</li>
 </ul>
+</main>
+
+</div>
 
 <hr>
-<footer>
-  <div class="yada">Everything here is written in my own name and on my own time.</div>
-  <div class="crumbs">Roman Bikbulatov</div>
-</footer>
+<footer>Roman Bikbulatov</footer>
 
 </body>
 </html>
