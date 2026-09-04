@@ -76,17 +76,14 @@ def fmt(date):
     return f"{date.day} {date:%b} {date.year}"
 
 
-def sidebar(here, notes):
-    """`here` is the url of the current page, so it can be marked."""
+def sidebar(here):
+    """Sections only. `here` is the url of the current page, so it can be
+    marked; a note marks Notes."""
     out = ['<ul class="sect">']
     for label, url, _ in SECTIONS:
-        cls = ' class="here"' if url == here else ""
+        cls = ' class="here"' if url == here or (
+            url == "/notes/" and here.startswith("/notes/")) else ""
         out.append(f'<li{cls}><a href="{url}">{label}</a></li>')
-    out.append("</ul>")
-    out.append('<ul class="sub">')
-    for n in notes:
-        cls = ' class="here"' if n["url"] == here else ""
-        out.append(f'<li{cls}><a href="{n["url"]}">{n["title"]}</a></li>')
     out.append("</ul>")
     return "\n".join(out)
 
@@ -108,10 +105,10 @@ def write(path, html):
     print(f"  {path}  {len(html)} b")
 
 
-def render(tpl, *, title, desc, here, notes, content, crumbs):
+def render(tpl, *, title, desc, here, content, crumbs):
     page = tpl
     for key, value in [("title", title), ("description", desc),
-                       ("nav", sidebar(here, notes)),
+                       ("nav", sidebar(here)),
                        ("content", content), ("crumbs", crumbs)]:
         page = page.replace("{{%s}}" % key, value)
     return page
@@ -132,7 +129,7 @@ def build():
                   if name != "index" else SITE)
         write(out, render(tpl, title=meta.get("head_title", meta["title"]),
                           desc=meta.get("description", ""), here=here,
-                          notes=notes, content=body, crumbs=crumbs))
+                          content=body, crumbs=crumbs))
 
     # Notes archive, grouped by year, newest first.
     body = ["<h1>Notes</h1>",
@@ -142,7 +139,7 @@ def build():
         body.append(entries([n for n in notes if n["date"].year == year], False))
     write("notes/index.html",
           render(tpl, title=f"Notes — {SITE}", desc="Everything written, newest first.",
-                 here="/notes/", notes=notes, content="\n".join(body),
+                 here="/notes/", content="\n".join(body),
                  crumbs=f'<a href="/">{SITE}</a>: Notes'))
 
     # One directory per note, so URLs stay clean.
@@ -157,7 +154,7 @@ def build():
                    + (f'<p class="prevnext">{" ".join(nav)}</p>' if nav else ""))
         write(f'notes/{n["slug"]}/index.html',
               render(tpl, title=n["title"], desc=n["desc"], here=n["url"],
-                     notes=notes, content=content,
+                     content=content,
                      crumbs=f'<a href="/">{SITE}</a>: '
                             f'<a href="/notes/">Notes</a>: {n["title"]}'))
 
