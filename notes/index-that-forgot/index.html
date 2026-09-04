@@ -30,22 +30,22 @@
 <main>
 <h1>The index that forgot where the questions came from</h1>
 <div class="date">14 Aug 2026</div>
-<p>A graph index is built once, over the vectors you happen to have. Every
-decision it makes &mdash; which neighbours to keep, which long edges are worth
-the memory &mdash; is a bet that future questions will look like the data. That
-bet is usually silent, and usually fine, and then one day it is not.</p>
+<p>A graph index is built once, over the vectors you happen to have. Which
+neighbours a node keeps, and which long edges earn their memory, are decisions
+taken against that data. They amount to a bet that later questions will look
+like it.</p>
 
-<p>The failure is undramatic, which is why it goes unnoticed. Recall does not
-collapse. It sags: ninety-six per cent becomes eighty-nine, the latency budget
-absorbs a few extra hops, and the dashboard shows a line that is slightly worse
-than last month. Nobody files a bug for slightly worse.</p>
+<p>When the bet fails, it fails quietly. Recall does not collapse, it sags.
+Ninety-six per cent becomes eighty-nine, the latency budget absorbs a few extra
+hops, and the dashboard shows a line slightly worse than last month. Nobody
+files a bug for slightly worse.</p>
 
 <h2>A small experiment</h2>
 
-<p>Take a million embeddings, build the usual graph, and then ask questions
-embedded by a <em>different</em> model of the same family. The vectors still
-live in the same space. They are still normalised. They are simply, in
-aggregate, somewhere slightly to the left.</p>
+<p>Take a million embeddings, build the usual graph, then ask questions
+embedded by a different model of the same family. The vectors still live in the
+same space and are still normalised. In aggregate they simply sit slightly to
+one side.</p>
 
 <table>
   <tr><th>Query source</th><th>Recall@10</th><th>Hops</th></tr>
@@ -54,28 +54,23 @@ aggregate, somewhere slightly to the left.</p>
   <tr><td>Sibling, re-entered</td><td>0.948</td><td>44</td></tr>
 </table>
 
-<p>The third row is the point. Nothing about the graph changed. The only
-difference is where the search starts: instead of the fixed entry point chosen
-at build time, it begins at the medoid of a few hundred cached queries from the
-last hour. Most of the loss was never a graph problem. It was a starting
-position problem.</p>
+<p>The third row is what I found interesting. Nothing about the graph changed.
+The search simply starts somewhere else: at the medoid of a few hundred cached
+queries from the last hour, rather than at the entry point chosen at build
+time. Most of the loss was never a property of the graph. It was a property of
+where the walk began.</p>
 
-<blockquote>
-<p>The index is not wrong about the data. It is uninformed about the
-questions.</p>
-</blockquote>
+<h2>The cost of the two fixes</h2>
 
-<h2>Why this is cheap</h2>
+<p>Re-entering costs a few hundred vectors of memory and one median update an
+hour. Rebuilding the index costs an afternoon of compute and a deploy. We tend
+to reach for the rebuild because it is the intervention we have a runbook for,
+which is a poor reason.</p>
 
-<p>Re-entering costs a few hundred vectors of memory and one median update per
-hour. Rebuilding the index costs an afternoon of compute and a deploy. We reach
-for the second because it is the intervention we have a runbook for, not
-because it is the one the numbers ask for.</p>
-
-<p>I do not think re-entry is a general answer. It patches the part of the
-mismatch that looks like translation, and does nothing for the part that looks
-like a change of shape. But a graph index has two inputs, and we usually only
-measure one of them.</p>
+<p>Re-entry is not a general answer. It corrects the part of the mismatch that
+looks like a translation and does nothing for the part that looks like a change
+of shape. But a graph index has two inputs, and we usually measure only one of
+them.</p>
 <p class="prevnext"><a href="/notes/faster-kernel/">&larr; Two weeks on a kernel, beaten by a library</a></p>
 </main>
 

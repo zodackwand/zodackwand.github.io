@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Two weeks on a kernel, beaten by a library</title>
-<meta name="description" content="I wrote a fused kernel. The vendor library was faster. Here is what the two weeks actually bought.">
+<meta name="description" content="I wrote a fused kernel. The vendor library was faster.">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
@@ -31,9 +31,8 @@
 <h1>Two weeks on a kernel, beaten by a library</h1>
 <div class="date">2 Jul 2026</div>
 <p>The profile said sixty-one per cent of the step was in one fused block. The
-arithmetic said that block was moving four times more memory than it needed to.
-Those two facts together make the most seductive sentence in systems work, and
-I spent two weeks following it.</p>
+arithmetic said that block moved four times more memory than it needed to. I
+spent two weeks on the gap between those two numbers.</p>
 
 <p>The napkin version, before any code:</p>
 
@@ -48,37 +47,33 @@ at ~2.6 TB/s                   =  103 us
 measured                       =  390 us
 </code></pre>
 
-<p>A factor of about four. That is exactly the size of gap that makes you
-believe you are one clever rewrite away from closing it, and exactly the size
-of gap that is usually made of six unglamorous things rather than one clever
-one.</p>
+<p>A factor of about four. Gaps that size are wide enough to look like one
+clever rewrite away, and are usually made of six dull things instead.</p>
 
 <h2>What happened</h2>
 
-<p>I got to 190&nbsp;&micro;s. Then I benchmarked the vendor library, which I
-had skipped because I assumed it did not fuse this pattern. It does, as of a
-version whose release notes I had not read. It runs in 171&nbsp;&micro;s.</p>
+<p>I got the kernel to 190&nbsp;&micro;s. Then I benchmarked the vendor
+library, which I had skipped at the start because I assumed it did not fuse
+this pattern. It does, as of a version whose release notes I had not read. It
+runs in 171&nbsp;&micro;s. Two weeks of work produced something ten per cent
+slower than one line of somebody else's code.</p>
 
-<p>So: two weeks of work produced a kernel ten per cent slower than one line of
-someone else's code.</p>
+<h2>What was left over</h2>
 
-<h2>What the two weeks bought</h2>
+<p>Half the speedup came from a layout change upstream of the kernel rather
+than from the kernel itself. That change stayed, and it helps the library
+version too.</p>
 
-<p>Not nothing, and I want to be careful about why, because "it was a learning
-experience" is what people say instead of "I was wrong".</p>
+<p>The benchmark harness turned out to be measuring with the cache warm in a
+way production never is, which had been quietly flattering every result it
+produced for months. Finding that was worth more than the kernel would have
+been.</p>
 
-<ul>
-  <li>I know the shape of the roofline for this operator now, so next time a
-      profile points here I can decide in ten minutes rather than ten days.</li>
-  <li>Half the speedup came from a layout change upstream of the kernel. That
-      change survived, and it helps the library version too.</li>
-  <li>Our benchmark harness was measuring with the cache warm in a way
-      production never is. That was worth the fortnight on its own.</li>
-</ul>
+<p>And I now know the shape of the roofline for this operator, so the next time
+a profile points here the decision takes ten minutes rather than ten days.</p>
 
-<p>The lesson is duller than the one I wanted: benchmark the boring option
-first. Not because it usually wins, but because knowing where it lands is what
-tells you whether the interesting option is worth two weeks.</p>
+<p>The rule I took away is to benchmark the boring option first. Knowing where
+it lands is what tells you how much room the interesting option has.</p>
 <p class="prevnext"><a href="/notes/late-trains/">&larr; Trains, and the arithmetic of being late</a> <a href="/notes/index-that-forgot/">The index that forgot where the questions came from &rarr;</a></p>
 </main>
 
