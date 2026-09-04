@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta property="og:type" content="{{ogtype}}">
+<meta property="og:site_name" content="Roman Bikbulatov">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131313">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
@@ -18,14 +27,17 @@
 {{nav}}
 </nav>
 
-<main>
+<main id="main">
 {{content}}
 </main>
 
 </div>
 
 <hr>
-<footer>{{crumbs}}</footer>
+<footer>
+<span class="crumbs">{{crumbs}}</span>
+<span class="updated">Last modified {{updated}}</span>
+</footer>
 
 </body>
 </html>
