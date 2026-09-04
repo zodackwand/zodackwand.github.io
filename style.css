@@ -134,7 +134,7 @@ a:focus-visible, .side a:focus-visible {
 
 .portrait {
   float: right;
-  width: 150px;
+  width: 170px;
   height: auto;
   margin: 0.2em 0 0.8em 1.6em;
   border: 1px solid #ddd;
@@ -185,7 +185,7 @@ footer .updated { font-variant-numeric: tabular-nums; }
   .side .sect li { display: inline; margin-right: 1.2em; }
   .side .me { font-size: 18px; margin-bottom: 0.9em; }
   main { max-width: none; }
-  .portrait { width: 110px; margin-left: 1.2em; }
+  .portrait { width: 125px; margin-left: 1.2em; }
 }
 
 @media (max-width: 30em) {
