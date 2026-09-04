@@ -19,10 +19,12 @@ SITE = "Roman Bikbulatov"
 BASE = "https://zodackwand.github.io"
 
 # Sidebar sections, in order: (label, url)
-SECTIONS = [("Home", "/"), ("Notes", "/notes/"), ("Research", "/research/")]
+SECTIONS = [("Home", "/"), ("Now", "/now/"),
+            ("Notes", "/notes/"), ("Research", "/research/")]
 
 # Pages that are not notes: source name -> (output path, url)
 PAGES = {"index":    ("index.html", "/"),
+         "now":      ("now/index.html", "/now/"),
          "research": ("research/index.html", "/research/"),
          "404":      ("404.html", "/404.html")}
 
