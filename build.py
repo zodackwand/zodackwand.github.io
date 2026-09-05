@@ -199,16 +199,7 @@ def build():
           + "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{m}</lastmod></url>\n"
                     for u, m in urls)
           + "</urlset>\n")
-    # Crawling is disallowed for everything that honours robots.txt.
-    # The named agents are redundant under the wildcard, but some crawlers
-    # only look for their own token, so they are spelled out.
-    agents = ["*", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot",
-              "Claude-User", "Claude-SearchBot", "anthropic-ai", "CCBot",
-              "Google-Extended", "PerplexityBot", "Perplexity-User",
-              "Applebot-Extended", "Bytespider", "Amazonbot", "meta-externalagent",
-              "cohere-ai", "Diffbot", "Timpibot", "Omgilibot", "ImagesiftBot"]
-    write("robots.txt",
-          "".join(f"User-agent: {a}\nDisallow: /\n\n" for a in agents).rstrip() + "\n")
+    write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
 
     print(f"done: {len(notes)} notes, {len(urls)} urls")
 
