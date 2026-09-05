@@ -221,6 +221,6 @@ footer .updated { font-variant-numeric: tabular-nums; }
   pre, code { background: #1c1c1c; }
   pre { border-color: #2b2b2b; }
   hr, th { border-color: #303030; }
-  .portrait { border-color: #303030; }
+  .portrait, .gallery img { border-color: #303030; }
   footer a { color: #7f9ae0; }
 }
